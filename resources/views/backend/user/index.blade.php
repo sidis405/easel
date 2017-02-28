@@ -45,6 +45,7 @@
                                 <th data-column-id="email">Email</th>
                                 <th data-column-id="role">Role</th>
                                 <th data-column-id="posts">Posts</th>
+                                <th data-column-id="edit_url" data-sortable="false" data-visible="false">Edit URL</th>
                                 <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                             </tr>
                             </thead>
@@ -56,6 +57,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->isAdmin($user->role) ? '<span class="label label-primary">Administrator</span>' : '<span class="label label-default">User</span>' }}</td>
                                     <td>{{ $user->postCount($user->id) }}</td>
+                                    <td>{!! route('canvas.admin.user.edit', $user->id) !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>

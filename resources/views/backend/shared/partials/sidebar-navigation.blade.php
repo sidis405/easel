@@ -30,7 +30,7 @@
                 <li><a href="{!! route('canvas.admin.tag.create') !!}" @if (Route::is('canvas.admin.tag.create')) class="active" @endif>Add New</a></li>
             </ul>
         </li>
-        <li @if (Request::is('admin/upload')) class="active" @endif><a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-collection-folder-image"></i> Media</a></li>
+        <li @if (Route::is('canvas.admin.upload')) class="active" @endif><a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-collection-folder-image"></i> Media</a></li>
         @if(\Canvas\Models\User::isAdmin(Auth::guard('canvas')->user()->role))
             <li class="sub-menu @if (Route::is('canvas.admin.user.index') || Route::is('canvas.admin.user.create') || Route::is('canvas.admin.user.edit'))active toggled @endif">
                 <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-accounts-alt"></i> Users</a>

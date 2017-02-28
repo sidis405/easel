@@ -45,6 +45,7 @@
                                     <th data-column-id="layout">Layout</th>
                                     <th data-column-id="direction">Direction</th>
                                     <th data-column-id="created" data-type="date">Created</th>
+                                    <th data-column-id="edit_url" data-sortable="false" data-visible="false">Edit URL</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -63,6 +64,7 @@
                                             @endif
                                         </td>
                                         <td>{!! $tag->created_at->format('M d, Y') !!}</td>
+                                        <td>{!! route('canvas.admin.tag.edit', $tag->id) !!}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
