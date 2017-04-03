@@ -3,13 +3,13 @@
 namespace Canvas\Http\Controllers\Frontend;
 
 use Auth;
-use Canvas\Models\Tag;
-use Canvas\Models\Post;
-use Canvas\Models\User;
-use Canvas\Models\Settings;
-use Illuminate\Http\Request;
-use Canvas\Jobs\BlogIndexData;
 use Canvas\Http\Controllers\Controller;
+use Canvas\Jobs\BlogIndexData;
+use Canvas\Models\Post;
+use Canvas\Models\Settings;
+use Canvas\Models\Tag;
+use Canvas\Models\User;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -52,7 +52,7 @@ class BlogController extends Controller
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
 
-        if (! $post->is_published && ! Auth::check()) {
+        if (!$post->is_published && !Auth::guard('canvas')->check()) {
             return redirect()->route('canvas.blog.post.index');
         }
 
