@@ -163,7 +163,7 @@ class CanvasCommand extends Command
 
     protected function createUser($email, $password, $firstName, $lastName)
     {
-        $user = User::firstOrCreate(['email' => $email]);
+        $user = User::firstOrNew(['email' => $email]);
         $user->password = bcrypt($password);
         $user->first_name = $firstName;
         $user->last_name = $lastName;
