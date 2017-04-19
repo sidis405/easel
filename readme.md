@@ -13,7 +13,7 @@
 
 > **Note:** This repository contains the framework of the blog publishing platform Canvas. If you want to create your own blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 
-[Canvas](http://canvas.toddaustin.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
+[Canvas](https://cnvs.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
 
 * [Google Material Design](https://material.google.com).
 * [SimpleMDE](https://simplemde.com) for markdown publishing.
