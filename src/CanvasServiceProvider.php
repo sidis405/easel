@@ -13,6 +13,7 @@ use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
 use Maatwebsite\Excel\Facades\Excel;
+use Canvas\Console\Commands\Uninstall;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
@@ -56,6 +57,7 @@ class CanvasServiceProvider extends ServiceProvider
         Assets::class,
         Install::class,
         Version::class,
+        Uninstall::class,
     ];
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use Canvas\Helpers\SetupHelper;
 use Canvas\Extensions\ThemeManager;
 
 class Theme extends CanvasCommand
@@ -37,6 +38,12 @@ class Theme extends CanvasCommand
      */
     public function handle()
     {
+        if (! SetupHelper::isInstalled()) {
+            $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
+
         $themeManager = new ThemeManager(resolve('app'), resolve('files'));
         $activeTheme = $themeManager->getTheme($themeManager->getActiveTheme()) ?: $themeManager->getDefaultTheme();
         $newThemeId = $this->argument('theme');
@@ -45,9 +52,9 @@ class Theme extends CanvasCommand
             if ($newTheme = $themeManager->getTheme($newThemeId)) {
                 $themeManager->activateTheme($newThemeId);
                 $activeTheme = $newTheme;
-                $this->comment(PHP_EOL."<info>✔</info> Successfully activated theme {$newTheme->getName()}!");
+                $this->comment(PHP_EOL."<info>[✔]</info> Successfully activated theme {$newTheme->getName()}!");
             } else {
-                $this->line(PHP_EOL."<error>✘</error> Could not activate theme ($newThemeId). Theme not found!");
+                $this->line(PHP_EOL."<error>[✘]</error> Could not activate theme ($newThemeId). Theme not found!");
             }
         }
 
@@ -56,6 +63,7 @@ class Theme extends CanvasCommand
         $headers = ['Active Theme', 'Version'];
         $data = [[$activeTheme->getName(), $activeTheme->getVersion()]];
         $this->table($headers, $data);
-        $this->line(PHP_EOL);
+        $this->line(PHP_EOL.'For more information on theme development, please visit cnvs.readme.io/docs/theme-overview.'
+            .PHP_EOL);
     }
 }

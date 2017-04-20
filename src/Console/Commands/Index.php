@@ -4,6 +4,7 @@ namespace Canvas\Console\Commands;
 
 use Artisan;
 use Exception;
+use Canvas\Helpers\CanvasHelper;
 
 class Index extends CanvasCommand
 {
@@ -20,7 +21,7 @@ class Index extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Index blog content for searches';
+    protected $description = 'Index content for searches';
 
     /**
      * Execute the console command.
@@ -30,34 +31,37 @@ class Index extends CanvasCommand
     public function handle()
     {
         try {
+            // Start the timer
+            $time_start = microtime(true);
+
             $this->createPostsIndex();
-            $this->line('<info>✔</info> Success! The posts index has been created.');
-
             $this->createTagsIndex();
-            $this->line('<info>✔</info> Success! The tags index has been created.');
-
             $this->createUsersIndex();
-            $this->line('<info>✔</info> Success! The users index has been created.');
+
+            // Stop the timer
+            $time_end = microtime(true);
+            $result = $time_end - $time_start;
+            $this->line(PHP_EOL.'<info>[✔]</info> The index completed in '.round($result, 2).' '.str_plural('second').'.'.PHP_EOL);
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>✘</error> '.$e->getMessage());
+            $this->line(PHP_EOL.'<error>[✘]</error> '.$e->getMessage().PHP_EOL);
         }
     }
 
     public function createPostsIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the posts table and saving it to /storage/canvas_posts.index...');
+        $this->comment(PHP_EOL.'Indexing the posts table, saving to '.storage_path(CanvasHelper::INDEXES['posts']).'...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Post']);
     }
 
     public function createTagsIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the tags table and saving it to /storage/canvas_tags.index...');
+        $this->comment('Indexing the tags table, saving to '.storage_path(CanvasHelper::INDEXES['tags']).'...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Tag']);
     }
 
     public function createUsersIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the users table and saving it to /storage/canvas_users.index...');
+        $this->comment('Indexing the users table, saving to '.storage_path(CanvasHelper::INDEXES['users']).'...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\User']);
     }
 }

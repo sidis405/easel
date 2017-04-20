@@ -13,7 +13,7 @@
 
 > **Note:** This repository contains the framework of the blog publishing platform Canvas. If you want to create your own blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 
-[Canvas](http://canvas.toddaustin.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
+[Canvas](https://cnvs.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
 
 * [Google Material Design](https://material.google.com).
 * [SimpleMDE](https://simplemde.com) for markdown publishing.
@@ -22,17 +22,17 @@
 * Native [Google Analytics](https://www.google.com/analytics/#?modal_active=none) integration.
 * Powered by [Laravel 5](https://laravel.com).
 
-## Supporting
+## Canvas Sponsors
 
-Canvas is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/cnvs/canvas/blob/develop/backers.md). If you'd like to join them, check out [Canvas' Patreon campaign](https://www.patreon.com/canvas).
+Canvas is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/cnvs/canvas/blob/develop/backers.md). If you are interested in becoming a sponsor, please visit the [Canvas Patreon page](https://www.patreon.com/canvas).
 
 ## Contributing
 
-Thank you for considering contributing to the the framework of Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
+Thank you for considering contributing to Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](https://github.com/cnvs/easel/releases).
+Details changes for each release are documented in the [changelog](https://cnvs.readme.io/docs/changelog).
 
 ## License
 

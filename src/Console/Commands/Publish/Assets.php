@@ -53,8 +53,7 @@ class Assets extends CanvasCommand
                 '--tag' => 'public',
                 '--force' => $force,
             ]);
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core public assets have been published.');
+            $this->line('<info>[✔]</info> Success! Canvas core public assets have been published.'.PHP_EOL);
         }
     }
 }

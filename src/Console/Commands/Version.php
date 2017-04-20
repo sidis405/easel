@@ -2,6 +2,8 @@
 
 namespace Canvas\Console\Commands;
 
+use Canvas\Helpers\SetupHelper;
+
 class Version extends CanvasCommand
 {
     /**
@@ -35,6 +37,22 @@ class Version extends CanvasCommand
      */
     public function handle()
     {
-        $this->comment($this->canvasVersion());
+        if (! SetupHelper::isInstalled()) {
+            $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
+
+        // Grab version info...
+        $currentVersion = $oldVersion = $this->canvasVersion();
+        $latestVersion = $this->latestVersion();
+
+        // Display results
+        $this->line('');
+        $headers = ['Installed Version', 'Latest Version'];
+        $data = [[$currentVersion, $latestVersion]];
+        $this->table($headers, $data);
+        $this->line(PHP_EOL.'For more information on upgrading Canvas, please visit cnvs.readme.io/docs/upgrade-guide.'
+            .PHP_EOL);
     }
 }

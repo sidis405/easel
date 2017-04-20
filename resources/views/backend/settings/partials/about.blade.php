@@ -6,7 +6,7 @@
     </div>
     <div class="card-body card-padding">
         <br>
-        <p><a href="http://canvas.toddaustin.io" target="_blank">Canvas</a> was born out of a desire for an elegant, well-architectured personal publishing platform built on <a href="https://laravel.com/" target="_blank">Laravel</a> that would be
+        <p><a href="https://cnvs.io" target="_blank">Canvas</a> was born out of a desire for an elegant, well-architectured personal publishing platform built on <a href="https://laravel.com/" target="_blank">Laravel</a> that would be
            attractive to developers and non-developers alike. If you like using this application and feel like it has helped you in any way, share it, tweet about it, fork it and give it a star on <a href="https://github.com/cnvs/canvas" target="_blank">GitHub</a>.</p>
         <hr>
         <div id="about">

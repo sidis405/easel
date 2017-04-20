@@ -22,26 +22,12 @@ class CanvasCommand extends Command
         parent::__construct();
     }
 
-    protected function progress($tasks)
-    {
-        $bar = $this->output->createProgressBar($tasks);
-
-        for ($i = 0; $i < $tasks; $i++) {
-            time_nanosleep(0, 200000000);
-            $bar->advance();
-        }
-
-        $bar->finish();
-    }
-
     protected function title($blogTitle)
     {
         $settings = new Settings();
         $settings->setting_name = 'blog_title';
         $settings->setting_value = $blogTitle;
         $settings->save();
-        $this->comment('Saving blog title...');
-        $this->progress(1);
     }
 
     protected function subtitle($blogSubtitle)
@@ -50,8 +36,6 @@ class CanvasCommand extends Command
         $settings->setting_name = 'blog_subtitle';
         $settings->setting_value = $blogSubtitle;
         $settings->save();
-        $this->comment('Saving blog subtitle...');
-        $this->progress(1);
     }
 
     protected function description($blogDescription)
@@ -60,8 +44,6 @@ class CanvasCommand extends Command
         $settings->setting_name = 'blog_description';
         $settings->setting_value = $blogDescription;
         $settings->save();
-        $this->comment('Saving blog description...');
-        $this->progress(1);
     }
 
     protected function seo($blogSeo)
@@ -70,15 +52,11 @@ class CanvasCommand extends Command
         $settings->setting_name = 'blog_seo';
         $settings->setting_value = $blogSeo;
         $settings->save();
-        $this->comment('Saving blog SEO keywords...');
-        $this->progress(1);
     }
 
     protected function postsPerPage($postsPerPage, $config)
     {
         $config->set('posts_per_page', intval($postsPerPage));
-        $this->comment('Saving posts per page...');
-        $this->progress(1);
     }
 
     protected function disqus()
@@ -130,7 +108,7 @@ class CanvasCommand extends Command
         try {
             File::delete(storage_path(CanvasHelper::INSTALLED_FILE));
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'Could not delete install file. You may need to delete '
+            $this->line(PHP_EOL.'Could not delete install file. Try deleting '
                 .storage_path(CanvasHelper::INSTALLED_FILE).' manually.');
             $this->line("<error>✘</error> {$e->getMessage()}");
         }
@@ -163,7 +141,7 @@ class CanvasCommand extends Command
 
     protected function createUser($email, $password, $firstName, $lastName)
     {
-        $user = User::firstOrCreate(['email' => $email]);
+        $user = User::firstOrNew(['email' => $email]);
         $user->password = bcrypt($password);
         $user->first_name = $firstName;
         $user->last_name = $lastName;
@@ -172,8 +150,6 @@ class CanvasCommand extends Command
         $user->save();
 
         $this->author($user->display_name);
-        $this->comment('Saving admin user account...');
-        $this->progress(1);
     }
 
     protected function author($blogAuthor)
@@ -186,26 +162,22 @@ class CanvasCommand extends Command
 
     protected function rebuildSearchIndexes()
     {
-        $this->comment(PHP_EOL.'Building the search index...');
-
         // Remove existing index files, could possibly throw an exception
         try {
-            if (file_exists(storage_path('canvas_posts.index'))) {
-                unlink(storage_path('canvas_posts.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['posts']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['posts']));
             }
-            if (file_exists(storage_path('canvas_users.index'))) {
-                unlink(storage_path('canvas_users.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['users']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['users']));
             }
-            if (file_exists(storage_path('canvas_tags.index'))) {
-                unlink(storage_path('canvas_tags.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['tags']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['tags']));
             }
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>✘</error> '.$e->getMessage());
+            $this->line(PHP_EOL.'<error>[✘]</error> '.$e->getMessage());
         }
 
         // Build the new indexes...
         $exitCode = Artisan::call('canvas:index');
-        $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
     }
 }

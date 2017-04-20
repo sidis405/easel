@@ -2,12 +2,13 @@
 
 namespace Canvas\Console\Commands;
 
-use Artisan;
 use Exception;
 use Canvas\Models\User;
+use Canvas\Meta\Constants;
 use Canvas\Helpers\SetupHelper;
 use Canvas\Helpers\ConfigHelper;
 use Canvas\Extensions\ThemeManager;
+use Illuminate\Support\Facades\Artisan;
 
 class Install extends CanvasCommand
 {
@@ -23,7 +24,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Canvas install wizard';
+    protected $description = 'Install and setup Canvas';
 
     /**
      * Create a new command instance.
@@ -38,23 +39,52 @@ class Install extends CanvasCommand
     /**
      * Execute the console command.
      *
-     * If the canvas_installed.lock file is found in the storage/ directory
-     * the installer will not execute.
-     *
      * @return mixed
      */
     public function handle()
     {
-        if (file_exists(storage_path('canvas_installed.lock'))) {
-            $this->line('<info>✔</info> Canvas has already been installed.');
+        if (SetupHelper::isInstalled()) {
+            $this->line(PHP_EOL.'<info>[✔]</info> Canvas has already been installed.'.PHP_EOL);
         } else {
-            $config = ConfigHelper::getWriter();
-
             // Gather the options...
             $force = $this->option('force') ?: false;
             $withViews = $this->option('views') ?: false;
+            $config = ConfigHelper::getWriter();
 
-            $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
+            $this->comment(PHP_EOL.'Verifying the system requirements...');
+            $missingExtensions = [];
+            foreach (Constants::REQUIRED_EXTENSIONS as $extension) {
+                if (in_array($extension, get_loaded_extensions())) {
+                    continue;
+                } else {
+                    array_push($missingExtensions, $extension);
+                }
+            }
+
+            if (! empty($missingExtensions)) {
+                $this->line(PHP_EOL.'<error>Your server does not meet the minimum system requirements.</error>'.PHP_EOL);
+                foreach ($missingExtensions as $extension) {
+                    $this->line('<error>[✘]</error> '.strtoupper($extension).' PHP extension is required');
+                }
+                $this->line(PHP_EOL.'For details on system requirements or installation support, please visit cnvs.readme.io.'.PHP_EOL);
+                die();
+            }
+
+            $this->comment('Checking directory permissions...');
+            if (! is_writable(storage_path()) || ! is_writable(public_path())) {
+                $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>'.PHP_EOL);
+
+                if (! is_writable(storage_path())) {
+                    $this->line('<error>[✘]</error> '.storage_path());
+                    $this->line('Fix this by running \'chmod -R 755 storage/\'.'.PHP_EOL);
+                }
+                if (! is_writable(public_path())) {
+                    $this->line('<error>[✘]</error> '.public_path());
+                    $this->line('Fix this by running \'chmod -R 755 public/\'.');
+                    $this->line(PHP_EOL.'For installation support and troubleshooting tips, please visit cnvs.readme.io.'.PHP_EOL);
+                }
+                die();
+            }
 
             // Attempt to link storage/app/public folder to public/storage;
             // This won't work on an OS without symlink support (e.g. Windows)
@@ -62,7 +92,7 @@ class Install extends CanvasCommand
                 Artisan::call('storage:link');
             } catch (Exception $e) {
                 $this->line(PHP_EOL.'Could not link <info>storage/app/public</info> folder to <info>public/storage</info>:');
-                $this->line("<error>✘</error> {$e->getMessage()}");
+                $this->line("<error>[✘]</error> {$e->getMessage()}");
             }
 
             try {
@@ -86,76 +116,65 @@ class Install extends CanvasCommand
 
                 // Set up the database...
                 if (! (SetupHelper::requiredTablesExists())) {
-                    $this->comment(PHP_EOL.'Setting up your database...');
+                    $this->comment('Configuring the database...');
                     $exitCode = Artisan::call('migrate', []);
                     $exitCode = Artisan::call('db:seed', [
                         '--class' => 'Canvas\DatabaseSeeder',
                     ]);
-                    $this->progress(5);
-                    $this->line(PHP_EOL.'<info>✔</info> Success! Your database is set up and configured.');
                 }
 
-                $this->comment(PHP_EOL.'Please provide the following information. Don\'t worry, you can always change these settings later.');
-
                 // Admin user information...
-                $this->comment(PHP_EOL.'<info>Step 1/6: Creating the admin user account</info>');
+                $this->comment(PHP_EOL.'<info>Step 1/3: Admin user account</info>');
                 $email = $this->ask('Email');
                 $password = $this->secret('Password');
                 $firstName = $this->ask('First name');
                 $lastName = $this->ask('Last name');
                 $this->createUser($email, $password, $firstName, $lastName);
-                $this->line(PHP_EOL.'<info>✔</info> Success! Your admin user account has been created.');
+                $this->line('<info>[✔]</info> Success! Your admin user account has been created.');
 
                 // Blog title...
-                $blogTitle = $this->ask('Step 2/6: Title of your blog');
+                $blogTitle = $this->ask('Step 2/3: Blog title');
                 $this->title($blogTitle);
-                $this->line(PHP_EOL.'<info>✔</info> Success! The title of the blog has been saved.');
+                $this->line('<info>[✔]</info> Success! The title of the blog has been saved.');
 
                 // Blog subtitle...
-                $blogSubtitle = $this->ask('Step 3/6: Subtitle of your blog');
+                $blogSubtitle = $this->ask('Step 3/3: Blog subtitle');
                 $this->subtitle($blogSubtitle);
-                $this->line(PHP_EOL.'<info>✔</info> Success! The subtitle of the blog has been saved.');
+                $this->line('<info>[✔]</info> Success! The subtitle of the blog has been saved.');
 
-                // Blog description...
-                $blogDescription = $this->ask('Step 4/6: Description of your blog');
-                $this->description($blogDescription);
-                $this->line(PHP_EOL.'<info>✔</info> Success! The description of the blog has been saved.');
+                // Default blog description...
+                $this->description('Not just another blog...');
 
-                // Blog SEO tags...
-                $blogSEO = $this->ask('Step 5/6: Blog SEO keywords (simple,powerful,blog,publishing,platform)');
-                $this->seo($blogSEO);
-                $this->line(PHP_EOL.'<info>✔</info> Success! The blog SEO keywords have been saved.');
+                // Default blog SEO tags...
+                $this->seo('simple,powerful,blog,publishing,platform');
 
-                // Blog posts per page...
-                $postsPerPage = $this->ask('Step 6/6: Number of posts to display per page');
-                $this->postsPerPage($postsPerPage, $config);
-                $this->line(PHP_EOL.'<info>✔</info> Success! The number of posts per page has been saved.');
+                // Default blog posts per page...
+                $this->postsPerPage(6, $config);
 
                 // Build the search index...
+                $this->comment(PHP_EOL.'Writing the search index...');
                 $this->rebuildSearchIndexes();
 
                 // Generate a unique application key...
-                $this->comment(PHP_EOL.'Creating a unique application key...');
+                $this->comment('Creating a unique application key...');
                 $exitCode = Artisan::call('key:generate');
-                $this->progress(5);
-                $this->line(PHP_EOL.'<info>✔</info> Success! A unique application key has been generated.');
 
                 // Additional blog settings...
-                $this->comment(PHP_EOL.'Finishing the installation...');
+                $this->comment('Finishing up the installation process...');
                 $this->disqus();
                 $this->googleAnalytics();
                 $this->twitterCardType();
                 $this->canvasVersion();
                 $this->installed();
                 $this->socialHeaderIcons();
-                $this->progress(5);
 
                 // Clear the caches...
+                Artisan::call('config:clear');
                 Artisan::call('cache:clear');
                 Artisan::call('view:clear');
                 Artisan::call('route:clear');
 
-                $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
+                echo SetupHelper::installedBanner().PHP_EOL;
 
                 // Display installation info...
                 $headers = ['Login Email', 'Login Password', 'Version', 'Theme'];
@@ -166,7 +185,9 @@ class Install extends CanvasCommand
                 $data[0]['password'] = 'Your chosen password.';
                 array_push($data[0], 'Canvas'.' '.$this->canvasVersion(), $activeTheme->getName().' '.$activeTheme->getVersion());
                 $this->table($headers, $data);
-                $this->line(PHP_EOL);
+
+                $this->line(PHP_EOL.'For help, please visit cnvs.readme.io. Follow us on GitHub at github.com/cnvs.'
+                    .PHP_EOL);
 
                 $config->save();
             } catch (Exception $e) {
@@ -176,7 +197,7 @@ class Install extends CanvasCommand
                 $this->uninstalled();
                 // Display message
                 $this->line(PHP_EOL.'<error>An unexpected error occurred. Installation could not continue.</error>');
-                $this->error("✘ {$e->getMessage()}");
+                $this->error("[✘] {$e->getMessage()}");
                 $this->comment(PHP_EOL.'Please run the installer again.');
                 $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
             }
