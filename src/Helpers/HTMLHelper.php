@@ -12,12 +12,12 @@ class HTMLHelper extends CanvasHelper
 {
     /**
      * Strip specific tag from HTML via DOMDocument..
-     * 
+     *
      * @param string $html String to strip tags from.
      * @param string $tagName
      * @return string
      */
-    public static function stripTags($html, $tagName = 'script') 
+    public static function stripTags($html, $tagName = 'script')
     {
         $doc = new DOMDocument();
 
@@ -39,11 +39,11 @@ class HTMLHelper extends CanvasHelper
 
     /**
      * Strip script tags from HTML.
-     * 
+     *
      * @see stripTags()
      */
     public static function stripScriptTags($html)
     {
-        return self::stripTags($html. 'script');
+        return self::stripTags($html.'script');
     }
 }
