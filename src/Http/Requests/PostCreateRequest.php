@@ -3,7 +3,6 @@
 namespace Canvas\Http\Requests;
 
 use Canvas\Helpers\CanvasHelper;
-use Illuminate\Foundation\Http\FormRequest;
 
 class PostCreateRequest extends FormRequest
 {
@@ -22,6 +21,8 @@ class PostCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitizePost();
+
         return [
             'title' => 'required',
             'slug' => 'required|unique:'.CanvasHelper::TABLES['posts'],

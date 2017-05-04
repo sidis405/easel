@@ -2,8 +2,6 @@
 
 namespace Canvas\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class TagUpdateRequest extends FormRequest
 {
     /**
@@ -23,6 +21,8 @@ class TagUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitizeTag();
+
         return [
             'title' => 'required',
             'subtitle' => 'required',
