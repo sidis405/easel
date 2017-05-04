@@ -78,6 +78,26 @@
 
     <div class="form-group">
         <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-disqus"></i> ChangYan APPID</label>
+            <input type="text" class="form-control" name="changyan_appid" id="changyan_appid" value="{{ $data['changyan_appid'] }}" placeholder="Changyan APPID">
+        </div>
+        <small>Enter your Changyan APPID.<a href="http://changyan.kuaizhan.com/" target="_blank">Apply Changyan</a>.</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-disqus"></i> ChangYan Conf</label>
+            <input type="text" class="form-control" name="changyan_conf" id="changyan_conf" value="{{ $data['changyan_conf'] }}" placeholder="Changyan Conf">
+        </div>
+        <small>Enter your Changyan Conf.</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
             <label class="fg-label"><i class="zmdi zmdi-trending-up"></i> Google Analytics</label>
             <input type="text" class="form-control" name="ga_id" id="ga_id" value="{{ $data['analytics'] }}" placeholder="Google Analytics Tracking ID">
         </div>
