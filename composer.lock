@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb5001cb9c5d9734eb60c30d10a31052",
+    "content-hash": "7fb14836cc8c394b43f72a752dc620ab",
     "packages": [
         {
             "name": "dflydev/apache-mime-types",
@@ -2592,27 +2592,23 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v3.0.0",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "a0fb306ff8391008381f6730f883ff8428defa20"
+                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/a0fb306ff8391008381f6730f883ff8428defa20",
-                "reference": "a0fb306ff8391008381f6730f883ff8428defa20",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/c3ce55bd3170ff14c8e116de3ea418237ec18d14",
+                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14",
                 "shasum": ""
             },
             "require": {
-                "illuminate/bus": "~5.4",
-                "illuminate/contracts": "~5.4",
-                "illuminate/database": "~5.4",
-                "illuminate/pagination": "~5.4",
-                "illuminate/queue": "~5.4",
-                "illuminate/support": "~5.4",
+                "illuminate/contracts": "~5.3",
+                "illuminate/database": "~5.3",
+                "illuminate/support": "~5.3",
                 "laravel/scout": "*",
-                "php": ">=5.6.4",
                 "teamtnt/tntsearch": "1.0.*"
             },
             "require-dev": {
@@ -2650,7 +2646,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2017-04-26T13:16:28+00:00"
+            "time": "2017-04-20T11:06:00+00:00"
         },
         {
             "name": "teamtnt/tntsearch",

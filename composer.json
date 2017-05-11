@@ -16,7 +16,7 @@
     "doctrine/dbal": "^2.5",
 		"talvbansal/media-manager": "^2.0",
 		"laravel/scout": "2.*",
-		"teamtnt/laravel-scout-tntsearch-driver": "3.*",
+		"teamtnt/laravel-scout-tntsearch-driver": "2.*",
 		"erusev/parsedown": "^1.6",
 		"proengsoft/laravel-jsvalidation": "1.5.*",
 		"maatwebsite/excel": "^2.1",
