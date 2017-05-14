@@ -72,7 +72,7 @@ class Install extends CanvasCommand
 
             $this->comment('Checking application environment...');
             if (env('APP_ENV') != 'local') {
-                $this->line(PHP_EOL.'<error>The \'APP_ENV\' variable needs to be set to \'local\' during the installation:</error>'.PHP_EOL);
+                $this->line(PHP_EOL.'<error>The \'APP_ENV\' variable needs to be set to \'local\' during the installation.</error>'.PHP_EOL);
                 die();
             }
 

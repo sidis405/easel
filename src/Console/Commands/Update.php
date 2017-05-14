@@ -45,13 +45,6 @@ class Update extends CanvasCommand
             die();
         }
 
-        // Since www-data owns the public/vendor/canvas directory, the CLI user
-        // needs to have permission during the canvas:update command to write
-        // various files and directories.
-        CanvasHelper::deleteDirectoryRecursively(public_path('vendor/canvas'));
-        chmod(public_path('vendor'), 0777);
-        unlink(storage_path('logs/laravel.log'));
-
         // Start the timer
         $time_start = microtime(true);
 
