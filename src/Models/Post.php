@@ -4,6 +4,7 @@ namespace Canvas\Models;
 
 use Carbon\Carbon;
 use Laravel\Scout\Searchable;
+use Canvas\Helpers\HTMLHelper;
 use Canvas\Helpers\CanvasHelper;
 use Canvas\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
@@ -87,7 +88,7 @@ class Post extends Model
     {
         $markdown = new Parsedowner();
         $this->attributes['content_raw'] = $value;
-        $this->attributes['content_html'] = $markdown->toHTML($value);
+        $this->attributes['content_html'] = HTMLHelper::stripScriptTags($markdown->toHTML($value));
     }
 
     /**

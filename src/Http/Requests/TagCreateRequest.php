@@ -3,7 +3,6 @@
 namespace Canvas\Http\Requests;
 
 use Canvas\Helpers\CanvasHelper;
-use Illuminate\Foundation\Http\FormRequest;
 
 class TagCreateRequest extends FormRequest
 {
@@ -24,6 +23,8 @@ class TagCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitizeTag();
+
         return [
             'tag' => 'required|unique:'.CanvasHelper::TABLES['tags'].',tag',
             'title' => 'required',
