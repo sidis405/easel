@@ -44,6 +44,6 @@ class HTMLHelper extends CanvasHelper
      */
     public static function stripScriptTags($html)
     {
-        return self::stripTags($html. 'script');
+        return self::stripTags($html.'script');
     }
 }

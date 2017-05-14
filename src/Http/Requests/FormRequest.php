@@ -14,7 +14,9 @@ class FormRequest extends BaseFormRequest
     public function sanitizePost()
     {
         $input = array_map('trim', $this->all());
-        if (!count($input)) return;
+        if (! count($input)) {
+            return;
+        }
 
         $input['title'] = strip_tags($input['title']);
         $input['subtitle'] = strip_tags($input['subtitle']);
@@ -31,7 +33,9 @@ class FormRequest extends BaseFormRequest
     public function sanitizeTag()
     {
         $input = array_map('trim', $this->all());
-        if (!count($input)) return;
+        if (! count($input)) {
+            return;
+        }
 
         $input['tag'] = strip_tags($input['tag']);
         $input['title'] = strip_tags($input['title']);
@@ -49,7 +53,9 @@ class FormRequest extends BaseFormRequest
     public function sanitizeUser()
     {
         $input = array_map('trim', $this->all());
-        if (!count($input)) return;
+        if (! count($input)) {
+            return;
+        }
 
         $input['bio'] = strip_tags($this['bio']);
         $input['url'] = strip_tags($this['url']);
