@@ -2650,16 +2650,16 @@
         },
         {
             "name": "teamtnt/tntsearch",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/tntsearch.git",
-                "reference": "22b94f432f24ce1c11afd0b4e02485759ae00dd0"
+                "reference": "163817a9d05cb048e920ee84f53efb4fff268df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/22b94f432f24ce1c11afd0b4e02485759ae00dd0",
-                "reference": "22b94f432f24ce1c11afd0b4e02485759ae00dd0",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/163817a9d05cb048e920ee84f53efb4fff268df9",
+                "reference": "163817a9d05cb048e920ee84f53efb4fff268df9",
                 "shasum": ""
             },
             "require": {
@@ -2702,7 +2702,7 @@
                 "teamtnt",
                 "tntsearch"
             ],
-            "time": "2017-04-10T12:47:20+00:00"
+            "time": "2017-05-11T21:10:29+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
