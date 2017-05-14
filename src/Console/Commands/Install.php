@@ -70,6 +70,12 @@ class Install extends CanvasCommand
                 die();
             }
 
+            $this->comment('Checking application environment...');
+            if (env('APP_ENV') != 'local') {
+                $this->line(PHP_EOL.'<error>The \'APP_ENV\' variable needs to be set to \'local\' during the installation:</error>'.PHP_EOL);
+                die();
+            }
+
             $this->comment('Checking directory permissions...');
             if (! is_writable(storage_path()) || ! is_writable(public_path())) {
                 $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>'.PHP_EOL);
