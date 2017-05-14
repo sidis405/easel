@@ -4,7 +4,6 @@ namespace Canvas\Console\Commands;
 
 use Artisan;
 use Canvas\Helpers\SetupHelper;
-use Canvas\Helpers\CanvasHelper;
 
 class Update extends CanvasCommand
 {
