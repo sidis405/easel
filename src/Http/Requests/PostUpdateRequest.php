@@ -5,6 +5,7 @@ namespace Canvas\Http\Requests;
 use Canvas\Models\Post;
 use Illuminate\Validation\Rule;
 use Canvas\Helpers\CanvasHelper;
+use Illuminate\Foundation\Http\FormRequest;
 
 class PostUpdateRequest extends FormRequest
 {
@@ -23,8 +24,6 @@ class PostUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $this->sanitizePost();
-
         $slug = Post::where('id', $this->route()->post)->pluck('slug');
 
         return [

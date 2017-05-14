@@ -3,6 +3,7 @@
 namespace Canvas\Http\Requests;
 
 use Canvas\Helpers\CanvasHelper;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserCreateRequest extends FormRequest
 {
@@ -23,8 +24,6 @@ class UserCreateRequest extends FormRequest
      */
     public function rules()
     {
-        $this->sanitizeUser();
-
         return [
             'first_name' => 'required',
             'last_name' => 'required',

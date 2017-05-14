@@ -5,6 +5,7 @@ namespace Canvas\Http\Requests;
 use Canvas\Models\User;
 use Illuminate\Validation\Rule;
 use Canvas\Helpers\CanvasHelper;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
 {
@@ -25,8 +26,6 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $this->sanitizeUser();
-
         $email = User::where('id', $this->route()->user)->pluck('email');
 
         return [
