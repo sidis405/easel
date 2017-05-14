@@ -7,12 +7,6 @@ use Illuminate\Database\Seeder;
 
 class SettingsTableSeeder extends Seeder
 {
-    /**
-     * Seed the settings table with fake data.
-     * This seeder is used because TravisCI is not
-     * able to run php artisan canvas:install in its
-     * execution.
-     */
     public function run()
     {
         $settings = new Settings();
