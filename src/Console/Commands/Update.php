@@ -4,6 +4,7 @@ namespace Canvas\Console\Commands;
 
 use Artisan;
 use Canvas\Helpers\SetupHelper;
+use Canvas\Helpers\CanvasHelper;
 
 class Update extends CanvasCommand
 {
@@ -43,6 +44,12 @@ class Update extends CanvasCommand
             $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
             die();
         }
+
+        // Since www-data owns the public/vendor/canvas directory, the CLI user
+        // needs to have permission during the canvas:update command to write
+        // various files and directories.
+        CanvasHelper::deleteDirectoryRecursively(public_path('vendor/canvas'));
+        chmod(public_path('vendor'), 0777);
 
         // Start the timer
         $time_start = microtime(true);
