@@ -1,6 +1,7 @@
 <?php
 
 namespace Canvas\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class TagUpdateRequest extends FormRequest
