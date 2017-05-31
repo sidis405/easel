@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $userData = $this->guard()->user()->toArray();
+        $userData = Auth::guard('canvas')->user()->toArray();
         $blogData = config('blog');
         $data = array_merge($userData, $blogData);
 

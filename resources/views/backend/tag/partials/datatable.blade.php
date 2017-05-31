@@ -13,7 +13,7 @@
             },
             formatters: {
                 "commands": function(column, row) {
-                    return "<a href='{{ url('') }}/admin/tag/" + row.id + "/edit'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a> ";
+                    return "<a href='"+row.edit_url+"'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a> ";
                 }
             }
         });

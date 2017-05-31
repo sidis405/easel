@@ -22,7 +22,6 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
-        {{--TODO: Replace url below with named route--}}
-        <a href="{{ url('admin/user/' . $data['id'] . '/edit') }}"><button type="button" class="btn btn-link">Cancel</button></a>
+        <a href="{{ route('canvas.admin.user.edit', [$data['id']])}}"><button type="button" class="btn btn-link">Cancel</button></a>
     </div>
 </form>
