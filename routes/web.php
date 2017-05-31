@@ -52,7 +52,7 @@ Route::group([
     'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(),
     'middleware' => RouteHelper::getAdminMiddleware(),
     'namespace' => 'Canvas\Http\Controllers\Backend',
-    'prefix' => RouteHelper::getAdminPrefix()
+    'prefix' => RouteHelper::getAdminPrefix(),
 ], function () {
     /* Admin dashboard page route. */
     Route::get('', 'HomeController@index')->name('canvas.admin');
