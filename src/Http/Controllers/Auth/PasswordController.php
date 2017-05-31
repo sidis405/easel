@@ -2,10 +2,9 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Auth;
-use Session;
 use Illuminate\Http\Request;
 use Canvas\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PasswordController extends Controller
 {
@@ -35,7 +34,7 @@ class PasswordController extends Controller
             'new_password' => 'required|confirmed|min:6',
         ]);
 
-        $guard = Auth::guard('canvas');
+        $guard = $this->guard();
 
         if (! $guard->validate($request->only('password'))) {
             return back()->withErrors(trans('auth.failed'));

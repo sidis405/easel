@@ -2,9 +2,9 @@
 
 namespace Canvas\Helpers;
 
-use File;
 use Schema;
 use Canvas\Models\Settings;
+use Illuminate\Support\Facades\File;
 
 class SetupHelper extends CanvasHelper
 {
@@ -43,5 +43,17 @@ class SetupHelper extends CanvasHelper
     public static function isInstalled()
     {
         return File::exists(storage_path(CanvasHelper::INSTALLED_FILE));
+    }
+
+    public static function installedBanner()
+    {
+        return PHP_EOL.'   ######       ##      ####     ##  ##      ##   ##       ########
+  ##////##     ####    /##/##   /## /##     /##  ####     ##////// 
+ ##    //     ##//##   /##//##  /## /##     /## ##//##   /##       
+/##          ##  //##  /## //## /## //##    ## ##  //##  /#########
+/##         ########## /##  //##/##  //##  ## ########## ////////##
+//##    ## /##//////## /##   //####   //#### /##//////##        /##
+ //######  /##     /## /##    //###    //##  /##     /##  ######## 
+  //////   //      //  //      ///      //   //      //  ////////'.PHP_EOL;
     }
 }

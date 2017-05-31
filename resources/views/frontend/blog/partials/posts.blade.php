@@ -6,7 +6,7 @@
         <p class="post-meta">
             {{ $post->published_at->diffForHumans() }} &#183; {{ $post->readingTime() }} MIN READ
             <br>
-            @unless ($post->tags->isEmpty())
+            @unless( $post->tags->isEmpty())
                 {!! implode(' ', $post->tagLinks()) !!}
             @endunless
         </p>

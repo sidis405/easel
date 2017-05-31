@@ -34,11 +34,10 @@ return [
     | Canvas Configuration : Post Layout
     |--------------------------------------------------------------------------
     |
-    | The post layout is only specified in src\Jobs\PostFormFields.php.
-    | If you need to update the layout, just change it there.
+    | The default layout for creating new posts.
     |
     */
-    'post_layout' => Canvas\Jobs\PostFormFields::$blogLayout,
+    'post_layout' => 'canvas::frontend.blog.post',
 
     /*
     |--------------------------------------------------------------------------

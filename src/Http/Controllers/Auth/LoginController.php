@@ -2,13 +2,11 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Auth;
-use Session;
-use Validator;
 use Canvas\Models\User;
 use Illuminate\Http\Request;
 use Canvas\Helpers\CanvasHelper;
 use Canvas\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -98,16 +96,6 @@ class LoginController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-    }
-
-    /**
-     * Get the guard to be used.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard('canvas');
     }
 
     /**

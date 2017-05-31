@@ -13,6 +13,7 @@ use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
 use Maatwebsite\Excel\Facades\Excel;
+use Canvas\Console\Commands\Uninstall;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
@@ -56,6 +57,7 @@ class CanvasServiceProvider extends ServiceProvider
         Assets::class,
         Install::class,
         Version::class,
+        Uninstall::class,
     ];
 
     /**
@@ -78,7 +80,7 @@ class CanvasServiceProvider extends ServiceProvider
         // Allow publishing the config file, with tag: config
         $this->publishes([$configPath => config_path('blog.php')], 'config');
 
-        // Merge config files
+        // Merge config files...
         // Allows any modifications from the published config file to be seamlessly merged with default config file
         $this->mergeConfigFrom($configPath, 'blog');
     }
@@ -88,7 +90,7 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleTranslations()
     {
-        // Load translations
+        // Load translations...
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'canvas');
     }
 
@@ -97,7 +99,7 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleViews()
     {
-        // Load views
+        // Load the views...
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'canvas');
 
         // Allow publishing view files, with tag: views
@@ -115,7 +117,7 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleMigrations()
     {
-        // Load migrations...
+        // Load the migrations...
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
@@ -124,7 +126,7 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleRoutes()
     {
-        // Get the routes
+        // Get the routes...
         require realpath(__DIR__.'/../routes/web.php');
     }
 
@@ -133,7 +135,7 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleCommands()
     {
-        // Register the commands
+        // Register the commands...
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
         }
@@ -176,10 +178,10 @@ class CanvasServiceProvider extends ServiceProvider
         $loader = AliasLoader::getInstance();
         $router = $this->app['router'];
 
-        // Register Factories...
+        // Register factories...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
 
-        // Register Service Providers...
+        // Register service providers...
         $this->app->register(JsValidationServiceProvider::class);
         $this->app->register(ScoutServiceProvider::class);
         $this->app->register(ExcelServiceProvider::class);
@@ -187,7 +189,7 @@ class CanvasServiceProvider extends ServiceProvider
         $this->app->register(TNTSearchScoutServiceProvider::class);
         $this->app->register(ExtensionsServiceProvider::class);
 
-        // Register Facades...
+        // Register facades...
         $loader->alias('JsValidator', JsValidatorFacade::class);
         $loader->alias('ConfigWriter', ConfigWriter::class);
         $loader->alias('Excel', Excel::class);
@@ -197,7 +199,7 @@ class CanvasServiceProvider extends ServiceProvider
         $loader->alias('CanvasRoute', RouteHelper::class);
         $loader->alias('CanvasSetup', SetupHelper::class);
 
-        // Register Middleware...
+        // Register middleware...
         $router->middleware('checkIfAdmin', CheckIfAdmin::class);
         $router->middleware('canvasInstalled', EnsureInstalled::class);
         $router->middleware('canvasNotInstalled', EnsureNotInstalled::class);

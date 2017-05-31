@@ -71,7 +71,7 @@
             <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
             <input type="text" class="form-control" name="disqus_name" id="disqus_name" value="{{ $data['disqus'] }}" placeholder="Disqus Shortname">
         </div>
-        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/advanced-options#section-disqus-integration" target="_blank">learn more about this option</a>.</small>
+        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/options#section-disqus" target="_blank">learn more about this option</a>.</small>
     </div>
 
     <br>
@@ -81,7 +81,7 @@
             <label class="fg-label"><i class="zmdi zmdi-trending-up"></i> Google Analytics</label>
             <input type="text" class="form-control" name="ga_id" id="ga_id" value="{{ $data['analytics'] }}" placeholder="Google Analytics Tracking ID">
         </div>
-        <small>Enter your Google Analytics Tracking ID or <a href="https://cnvs.readme.io/docs/advanced-options#section-google-analytics" target="_blank">learn more about this option</a>.</small>
+        <small>Enter your Google Analytics Tracking ID or <a href="https://cnvs.readme.io/docs/options#section-google-analytics" target="_blank">learn more about this option</a>.</small>
     </div>
 
     <br>

@@ -2,13 +2,13 @@
 
 namespace Canvas\Helpers;
 
-use Session;
 use ErrorException;
 use Canvas\Models\User;
 use Canvas\Meta\Constants;
 use Canvas\Models\Settings;
 use Illuminate\Http\Request;
 use Canvas\Extensions\ExtensionManager;
+use Illuminate\Support\Facades\Session;
 
 class CanvasHelper extends Constants
 {
@@ -26,8 +26,8 @@ class CanvasHelper extends Constants
     /**
      * Actions to be taken when user is successfully authenticated.
      *
-     * @param Illuminate\Http\Request $request
-     * @param Canvas\Models\User $user
+     * @param Request $request
+     * @param User $user
      * @return void
      */
     public static function authenticated(Request $request, User $user)

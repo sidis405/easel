@@ -3,6 +3,7 @@
 namespace Canvas\Console\Commands;
 
 use Artisan;
+use Canvas\Helpers\SetupHelper;
 
 class Update extends CanvasCommand
 {
@@ -18,7 +19,7 @@ class Update extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Update Canvas to the latest version';
+    protected $description = 'Upgrade Canvas to latest version';
 
     /**
      * Create a new command instance.
@@ -37,70 +38,80 @@ class Update extends CanvasCommand
      */
     public function handle()
     {
-        // Get the options passed into the command
+        if (! SetupHelper::isInstalled()) {
+            $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
+
+        // Start the timer
+        $time_start = microtime(true);
+
+        // Gather the options...
         $force = $this->option('force') ?: false;
         $withViews = $this->option('views') ?: false;
         $update = true;
-
-        // Grab version info
         $currentVersion = $oldVersion = $this->canvasVersion();
-        $latestVersion = $this->latestVersion();
 
-        // Display the welcome message
-        $this->comment(PHP_EOL.'Welcome to the Canvas Update Wizard! You\'ll be back at it in no time...');
+        // Enable maintenance mode...
+        $this->comment(PHP_EOL.'Enabling maintenance mode...');
+        Artisan::call('down');
 
-        if ($currentVersion != $latestVersion
-            && $this->confirm(PHP_EOL."You are running Canvas framework: $currentVersion. The latest version currently available is: $latestVersion.".PHP_EOL.'Continue the update?')) {
-            // Update dependencies
-            $this->comment(PHP_EOL.'Composer update...');
-            $updateCore = shell_exec('cd '.base_path().'; composer update --quiet');
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas dependencies been updated.');
-        }
+        // Update dependencies...
+        $this->comment('Composer update...');
+        $updateCore = shell_exec('cd '.base_path().'; composer update --quiet');
 
-        // Update core assets
+        // Update core assets...
         if ($update) {
-            $this->comment(PHP_EOL.'Publishing framework package assets...');
+            $this->comment('Publishing core package assets...');
 
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
 
-            // Publish public assets
+            // Publish public assets...
             Artisan::call('canvas:publish:assets', [
                 '--y' => true,
-                // Always update public assets
+                // Always update public assets...
                 '--force' => true,
             ]);
-            // Publish view files
+            // Publish view files...
             if ($withViews) {
                 Artisan::call('canvas:publish:views', [
                     '--y' => true,
-                    // User can decide this
+                    // User can decide this...
                     '--force' => $force,
                 ]);
             }
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas framework assets have been published.');
         }
 
         $this->rebuildSearchIndexes();
 
-        // Additional blog settings
-        $this->comment(PHP_EOL.'Finishing the update...');
+        $this->comment('Finishing up the upgrade process...');
 
-        // Clear all the caches
+        // Clear the caches...
+        Artisan::call('config:clear');
         Artisan::call('cache:clear');
         Artisan::call('view:clear');
         Artisan::call('route:clear');
-        // Grab new version
-        $newVersion = $this->canvasVersion();
-        $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Your installation of Canvas has been updated.'.PHP_EOL);
 
-        // Display results
+        // Disable maintenance mode...
+        $this->comment('Disabling maintenance mode...'.PHP_EOL);
+        Artisan::call('up');
+
+        // Grab new version...
+        $newVersion = $this->canvasVersion();
+
+        // Stop the timer
+        $time_end = microtime(true);
+        $result = $time_end - $time_start;
+
+        // Display results...
         $headers = ['Previous Version', 'New Version'];
         $data = [[$oldVersion, $newVersion]];
         $this->table($headers, $data);
-        $this->line(PHP_EOL);
+
+        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('second').'.'.PHP_EOL);
+
+        $this->line('To see what\'s new, please visit https://cnvs.readme.io/docs/changelog.'.PHP_EOL);
     }
 }

@@ -38,7 +38,7 @@ class Config extends CanvasCommand
      */
     public function handle()
     {
-        // gather options
+        // Gather options...
         $publish = $this->option('y') ?: false;
         $force = $this->option('force') ?: false;
 
@@ -46,15 +46,14 @@ class Config extends CanvasCommand
             $publish = $this->confirm('Publish Canvas core config files?');
         }
 
-        // publish
+        // Publish config...
         if ($publish) {
             $exitCode = Artisan::call('vendor:publish', [
                 '--provider' => 'Canvas\CanvasServiceProvider',
                 '--tag' => 'config',
                 '--force' => $force,
             ]);
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core config files have been published.');
+            $this->line('<info>[✔]</info> Success! Canvas core config files have been published.'.PHP_EOL);
         }
     }
 }

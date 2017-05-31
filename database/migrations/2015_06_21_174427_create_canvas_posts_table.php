@@ -24,7 +24,7 @@ class CreateCanvasPostsTable extends Migration
             $table->boolean('is_draft')->default(false);
             $table->string('layout')->default(config('blog.post_layout'));
             $table->timestamps();
-            $table->timestamp('published_at')->index();
+            $table->timestamp('published_at')->nullable()->index();
         });
     }
 

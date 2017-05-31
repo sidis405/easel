@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <h1><a href="{!! route('canvas.blog.post.index') !!}">{{ \Canvas\Models\Settings::blogTitle() }}</a></h1>
-            <h3>{{ \Canvas\Models\Settings::blogSubTitle() }}</h3>
+            <h3>{!! \Canvas\Models\Settings::blogSubTitle() !!}</h3>
             @if (!empty($socialHeaderIconsUser->twitter))
                 <a href="http://twitter.com/{{ $socialHeaderIconsUser->twitter }}" target="_blank" id="social"><i class="fa fa-fw fa-twitter text-muted" style="font-size: 14px"></i></a>
             @endif

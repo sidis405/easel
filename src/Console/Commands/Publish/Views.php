@@ -38,7 +38,7 @@ class Views extends CanvasCommand
      */
     public function handle()
     {
-        // gather arguments
+        // Gather arguments...
         $publish = $this->option('y') ?: false;
         $force = $this->option('force') ?: false;
 
@@ -46,15 +46,14 @@ class Views extends CanvasCommand
             $publish = $this->confirm('Publish Canvas core view files?');
         }
 
-        // publish
+        // Publish views...
         if ($publish) {
             $exitCode = Artisan::call('vendor:publish', [
                 '--provider' => 'Canvas\CanvasServiceProvider',
                 '--tag' => 'views',
                 '--force' => $force,
             ]);
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core view files have been published.');
+            $this->line('<info>[✔]</info> Success! Canvas core view files have been published.'.PHP_EOL);
         }
     }
 }

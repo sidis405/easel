@@ -98,6 +98,15 @@ class Constants
     const ROUTE_DEFAULT_PASSWORD_PREFIX = 'password';
 
     /**
+     * @constant(INDEXES)
+     */
+    const INDEXES = [
+        'posts' => 'canvas_posts.index',
+        'tags' => 'canvas_tags.index',
+        'users' => 'canvas_users.index',
+    ];
+
+    /**
      * @constant(TABLES)
      */
     const TABLES = [
@@ -107,5 +116,17 @@ class Constants
         'tags' => 'canvas_tags',
         'post_tag' => 'canvas_post_tag',
         'settings' => 'canvas_settings',
+    ];
+
+    /**
+     * @constant(REQUIRED_EXTENSIONS)
+     */
+    const REQUIRED_EXTENSIONS = [
+        'PDO',
+        'sqlite3',
+        'openssl',
+        'mbstring',
+        'tokenizer',
+        'zip',
     ];
 }

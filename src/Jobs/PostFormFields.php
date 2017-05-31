@@ -22,13 +22,6 @@ class PostFormFields
     protected $id;
 
     /**
-     * The default layout for creating new posts.
-     *
-     * @var string
-     */
-    public static $blogLayout = 'canvas::frontend.blog.post';
-
-    /**
      * List of fields and default value for each field.
      *
      * @var array
@@ -58,7 +51,7 @@ class PostFormFields
     public function __construct($id = null)
     {
         $this->id = $id;
-        $this->fieldList['layout'] = self::$blogLayout;
+        $this->fieldList['layout'] = config('blog.post_layout');
     }
 
     /**
