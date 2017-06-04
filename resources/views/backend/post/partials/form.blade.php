@@ -55,7 +55,7 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
+                            <textarea id="editor" name="content" placeholder="Content" v-pre>{{ $content }}</textarea>
                         </div>
                     </div>
                 </div>
