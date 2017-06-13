@@ -15,7 +15,6 @@
             @include('canvas::backend.shared.partials.footer')
         @endif
         @include('canvas::backend.shared.partials.js')
-        @include('canvas::backend.shared.partials.search')
         @yield('unique-js')
     </body>
 </html>

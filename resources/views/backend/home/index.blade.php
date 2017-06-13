@@ -40,5 +40,4 @@
         {{ \Session::forget('_login') }}
     @endif
     @include('canvas::backend.shared.components.slugify')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\PostCreateRequest', '#postCreate') !!}
 @stop

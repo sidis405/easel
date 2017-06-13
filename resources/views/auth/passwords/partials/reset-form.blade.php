@@ -1,11 +1,6 @@
 <form role="form" id="forgot-password" method="POST" action="{!! route('canvas.auth.password.reset.store') !!}">
     {!! csrf_field() !!}
 
-    @if(session()->has('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
     <input type="hidden" name="token" value="{{ $token }}">
     <div class="form-group fg-line">
         <input type="email" id="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="Email">

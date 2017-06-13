@@ -8,8 +8,6 @@
 
         @include('canvas::backend.shared.partials.errors')
 
-        @include('canvas::backend.shared.partials.success')
-
         @include('canvas::backend.settings.partials.form.settings')
     </div>
 </div>
