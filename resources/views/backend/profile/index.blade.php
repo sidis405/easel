@@ -12,6 +12,8 @@
         <input type="hidden" name="_method" value="PUT">
 
         <div class="pmb-block">
+            @include('canvas::backend.shared.partials.errors')
+            <br>
             <div class="pmbb-header">
                 <h2><i class="zmdi zmdi-equalizer m-r-10"></i> Edit Summary</h2>
             </div>
@@ -56,7 +58,6 @@
 @section('unique-js')
     @include('canvas::backend.profile.partials.editor')
 
-    {!! JsValidator::formRequest('Canvas\Http\Requests\ProfileUpdateRequest', '#profileUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 
     @if(Session::get('_profile'))

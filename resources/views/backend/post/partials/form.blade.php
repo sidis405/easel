@@ -11,8 +11,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    @include('canvas::backend.shared.partials.errors')
-                    @include('canvas::backend.shared.partials.success')
 
                     @if(Route::is('canvas.admin.post.create'))
                         <ol class="breadcrumb">
@@ -33,8 +31,11 @@
                         </h2>
                     @endif
                 </div>
+
                 <div class="card-body card-padding">
-                    <br>
+
+                    @include('canvas::backend.shared.partials.errors')
+
                     <div class="form-group">
                         <div class="fg-line">
                             <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" placeholder="Title">

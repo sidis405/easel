@@ -28,7 +28,6 @@
                             </li>
                         </ul>
                         @include('canvas::backend.shared.partials.errors')
-                        @include('canvas::backend.shared.partials.success')
                         <h2>Posts&nbsp;
                             <a href="{!! route('canvas.admin.post.create') !!}" id="create-post"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
 

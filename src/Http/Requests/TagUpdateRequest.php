@@ -24,8 +24,9 @@ class TagUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'tag' => 'required',
             'title' => 'required',
-            'subtitle' => 'required',
+            'subtitle' => 'required'
         ];
     }
 }

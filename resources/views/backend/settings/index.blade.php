@@ -33,7 +33,6 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\SettingsUpdateRequest', '#settings') !!}
     @if(Session::get('_update-settings'))
         @include('canvas::backend.shared.notifications.notify', ['section' => '_update-settings'])
         {{ \Session::forget('_update-settings') }}

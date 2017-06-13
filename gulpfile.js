@@ -31,7 +31,6 @@ elixir(function (mix) {
         'jquery.bootgrid.min.js',
         'lightgallery.min.js',
         'waves.js',
-        'jsvalidation.js',
         'jquery.mCustomScrollbar.concat.min.js',
         'fileinput.min.js',
         'bootstrap-datetimepicker.min.js',

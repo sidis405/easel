@@ -17,8 +17,10 @@
 
 @section('unique-js')
     @include('canvas::backend.post.partials.editor')
+
     @include('canvas::backend.shared.notifications.protip')
+
     @include('canvas::backend.shared.components.datetime-picker')
+
     @include('canvas::backend.shared.components.slugify')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\PostCreateRequest', '#postCreate') !!}
 @stop

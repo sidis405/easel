@@ -16,11 +16,13 @@
                             <li><a href="{!! route('canvas.admin.tag.index') !!}">Tags</a></li>
                             <li class="active">New Tag</li>
                         </ol>
-                        @include('canvas::backend.shared.partials.errors')
-                        @include('canvas::backend.shared.partials.success')
                         <h2>Create a New Tag</h2>
                     </div>
+
                     <div class="card-body card-padding">
+
+                        @include('canvas::backend.shared.partials.errors')
+
                         <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('canvas.admin.tag.index') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -40,7 +42,5 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\TagCreateRequest', '#tagUpdate'); !!}
-
     @include('canvas::backend.shared.notifications.protip')
 @stop

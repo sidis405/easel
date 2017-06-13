@@ -30,7 +30,7 @@
             setTimeout(function () {
                 var message = $("#{{ $section }}").data("field-message");
                 notify(message, 'inverse');
-            }, 300)
+            }, 0)
         });
     });
 </script>

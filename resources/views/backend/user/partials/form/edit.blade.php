@@ -3,6 +3,8 @@
     <input type="hidden" name="_method" value="PUT">
 
     <div class="pmb-block">
+        @include('canvas::backend.shared.partials.errors')
+        <br>
         <div class="pmbb-header">
             <h2><i class="zmdi zmdi-key m-r-10"></i> Edit Role</h2>
         </div>
