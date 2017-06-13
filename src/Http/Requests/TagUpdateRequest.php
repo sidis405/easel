@@ -26,7 +26,7 @@ class TagUpdateRequest extends FormRequest
         return [
             'tag' => 'required',
             'title' => 'required',
-            'subtitle' => 'required'
+            'subtitle' => 'required',
         ];
     }
 }
