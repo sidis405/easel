@@ -2,6 +2,7 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
+use Auth;
 use Session;
 use Canvas\Models\User;
 use Canvas\Http\Controllers\Controller;
