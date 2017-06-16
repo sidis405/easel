@@ -28,7 +28,6 @@
                             </li>
                         </ul>
                         @include('canvas::backend.shared.partials.errors')
-                        @include('canvas::backend.shared.partials.success')
                         <h2>Tags&nbsp;
                             <a href="{!! route('canvas.admin.tag.create') !!}" id="create-tag"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
                             <small>This page provides a comprehensive overview of all your blog tags. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each tag to update its contents.</small>
@@ -45,6 +44,7 @@
                                     <th data-column-id="layout">Layout</th>
                                     <th data-column-id="direction">Direction</th>
                                     <th data-column-id="created" data-type="date">Created</th>
+                                    <th data-column-id="edit_url" data-sortable="false" data-visible="false">Edit URL</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -63,6 +63,7 @@
                                             @endif
                                         </td>
                                         <td>{!! $tag->created_at->format('M d, Y') !!}</td>
+                                        <td>{!! route('canvas.admin.tag.edit', $tag->id) !!}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

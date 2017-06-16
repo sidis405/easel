@@ -18,14 +18,18 @@
 
 @section('unique-js')
     @include('canvas::backend.post.partials.editor')
+
     @include('canvas::backend.shared.components.datetime-picker')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\PostUpdateRequest', '#postUpdate'); !!}
+
     @if(Session::get('_update-post'))
         @include('canvas::backend.shared.notifications.notify', ['section' => '_update-post'])
         {{ \Session::forget('_update-post') }}
     @endif
+
     @if(Session::get('_new-post'))
         @include('canvas::backend.shared.notifications.notify', ['section' => '_new-post'])
         {{ \Session::forget('_new-post') }}
     @endif
+
+    @include('canvas::backend.shared.components.slugify')
 @stop

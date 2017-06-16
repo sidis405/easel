@@ -12,6 +12,5 @@
 @endsection
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\PasswordResetRequest', '#forgot-password') !!}
     @include('canvas::backend.shared.components.show-password', ['inputs' => 'input[name="password"]'])
 @stop

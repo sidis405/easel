@@ -47,13 +47,13 @@
 
 <div class="form-group">
     <label class="radio radio-inline m-r-20">
-        <input type="radio" name="role" id="role" value="0">
+        <input type="radio" name="role" id="role" value="0" @if (Input::old('role') == 0) checked @endif>
         <i class="input-helper"></i>
         User
     </label>
 
     <label class="radio radio-inline m-r-20">
-        <input type="radio" name="role" value="1">
+        <input type="radio" name="role" value="1" @if (Input::old('role') == 1) checked @endif>
         <i class="input-helper"></i>
         Administrator
     </label>

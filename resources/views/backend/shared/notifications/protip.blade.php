@@ -53,7 +53,7 @@
                     message12
                 ];
                 notify(options[Math.floor(Math.random() * options.length)], 'inverse');
-            }, 300)
+            }, 0)
         });
     });
 </script>

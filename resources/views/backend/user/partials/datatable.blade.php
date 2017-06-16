@@ -13,9 +13,9 @@
                 "commands": function(column, row) {
                     var authenticatedUserId = $("#authUserId").data("field-message");
                     if (row.id === authenticatedUserId) {
-                        return "<a href='{{ url('admin/profile') }}'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a>";
+                        return "<a href='{{ route('canvas.admin.profile.index') }}'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a>";
                     } else {
-                        return "<a href='{{ url('admin/user') }}/" + row.id + "/edit'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a>";
+                        return "<a href='" + row.edit_url + "'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a>";
                     }
                 }
             }

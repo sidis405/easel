@@ -70,6 +70,12 @@ class Install extends CanvasCommand
                 die();
             }
 
+            $this->comment('Checking application environment...');
+            if (env('APP_ENV') != 'local') {
+                $this->line(PHP_EOL.'<error>The \'APP_ENV\' variable needs to be set to \'local\' during the installation.</error>'.PHP_EOL);
+                die();
+            }
+
             $this->comment('Checking directory permissions...');
             if (! is_writable(storage_path()) || ! is_writable(public_path())) {
                 $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>'.PHP_EOL);
@@ -186,8 +192,7 @@ class Install extends CanvasCommand
                 array_push($data[0], 'Canvas'.' '.$this->canvasVersion(), $activeTheme->getName().' '.$activeTheme->getVersion());
                 $this->table($headers, $data);
 
-                $this->line(PHP_EOL.'For help, please visit cnvs.readme.io. Follow us on GitHub at github.com/cnvs.'
-                    .PHP_EOL);
+                $this->line(PHP_EOL.'For help, please visit cnvs.readme.io. Follow us on Twitter at twitter.com/cnvs_io.'.PHP_EOL);
 
                 $config->save();
             } catch (Exception $e) {

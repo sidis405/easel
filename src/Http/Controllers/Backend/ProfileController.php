@@ -2,6 +2,7 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
+use Auth;
 use Session;
 use Canvas\Models\User;
 use Canvas\Http\Controllers\Controller;
@@ -16,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $userData = $this->guard()->user()->toArray();
+        $userData = Auth::guard('canvas')->user()->toArray();
         $blogData = config('blog');
         $data = array_merge($userData, $blogData);
 

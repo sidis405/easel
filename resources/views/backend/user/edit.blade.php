@@ -35,14 +35,6 @@
                                 <a href="{!! route('canvas.admin.user.privacy', $data['id']) !!}">Privacy</a>
                             </li>
                         </ul>
-                        @if(Session::has('errors') || Session::has('success'))
-                            <div class="pmb-block">
-                                <div class="pmbb-header">
-                                    @include('canvas::backend.shared.partials.errors')
-                                    @include('canvas::backend.shared.partials.success')
-                                </div>
-                            </div>
-                        @endif
                         @include('canvas::backend.user.partials.form.edit')
                     </div>
                 </div>
@@ -55,7 +47,6 @@
 @section('unique-js')
     @include('canvas::backend.user.partials.editor')
 
-    {!! JsValidator::formRequest('Canvas\Http\Requests\UserUpdateRequest', '#userUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 
     @if(Session::get('_updateUser'))
