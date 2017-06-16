@@ -29,7 +29,6 @@ use Canvas\Extensions\ExtensionsServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
 use Canvas\Http\Middleware\CheckForMaintenanceMode;
 use Larapack\ConfigWriter\Repository as ConfigWriter;
-use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
@@ -188,7 +187,6 @@ class CanvasServiceProvider extends ServiceProvider
         $this->app->register(ExtensionsServiceProvider::class);
 
         // Register facades...
-        $loader->alias('JsValidator', JsValidatorFacade::class);
         $loader->alias('ConfigWriter', ConfigWriter::class);
         $loader->alias('Excel', Excel::class);
         $loader->alias('Settings', Settings::class);
