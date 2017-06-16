@@ -22,7 +22,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media</a>
+                                        <a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media Library</a>
                                     </li>
                                 </ul>
                             </li>
