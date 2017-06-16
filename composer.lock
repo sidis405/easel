@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ad94732c45ee09273a47592f047dbee",
+    "content-hash": "3904bda5b7dc5277f1970f1e7fdbafef",
     "packages": [
         {
             "name": "dflydev/apache-mime-types",
