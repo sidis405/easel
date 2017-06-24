@@ -66,7 +66,7 @@
 
     <br>
 
-    @if ('asia/shanghai' != config('app.timezone'))
+    @if ('asia/shanghai' != strtolower(config('app.timezone')))
     <div class="form-group">
         <div class="fg-line">
             <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
