@@ -66,6 +66,7 @@
 
     <br>
 
+    @if ('asia/shanghai' != config('app.timezone'))
     <div class="form-group">
         <div class="fg-line">
             <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
@@ -73,8 +74,8 @@
         </div>
         <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/options#section-disqus" target="_blank">learn more about this option</a>.</small>
     </div>
-
     <br>
+    @else
 
     <div class="form-group">
         <div class="fg-line">
@@ -83,8 +84,8 @@
         </div>
         <small>Enter your Changyan APPID.<a href="http://changyan.kuaizhan.com/" target="_blank">Apply Changyan</a>.</small>
     </div>
-
     <br>
+    @endif
 
     <div class="form-group">
         <div class="fg-line">
