@@ -184,6 +184,7 @@
 <media-manager
         :is-modal="true"
         :selected-event-name="selectedEventName"
+        prefix="/admin/"
         @media-manager-close="showMediaManager = false"
                                            >
 </media-manager>

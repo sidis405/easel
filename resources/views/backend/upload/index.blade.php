@@ -34,7 +34,7 @@
                         </h2>
                     </div>
 
-                    <media-manager></media-manager>
+                    <media-manager prefix="/admin/"></media-manager>
                 </div>
             </div>
         </section>
