@@ -28,8 +28,9 @@
                             </li>
                         </ul>
                         <h2>Media Library
-                            <small>All the files you’ve uploaded are listed alphabetically in the Media Library. Double-click a folder name to
-                                see its contents.
+                            <small>
+                                Drag and drop files onto this window to upload. Double-click a folder name to see its
+                                contents.
                             </small>
                         </h2>
                     </div>
