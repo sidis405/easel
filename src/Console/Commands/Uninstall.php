@@ -87,16 +87,19 @@ class Uninstall extends CanvasCommand
 
     protected function removeUploads($directory)
     {
-        if (is_dir($directory))
+        if (is_dir($directory)) {
             $dir_handle = opendir($directory);
-        if (!$dir_handle)
+        }
+        if (! $dir_handle) {
             return false;
-        while($file = readdir($dir_handle)) {
-            if ($file != "." && $file != ".." && $file != ".gitignore") {
-                if (!is_dir($directory."/".$file))
-                    unlink($directory."/".$file);
-                else
+        }
+        while ($file = readdir($dir_handle)) {
+            if ($file != '.' && $file != '..' && $file != '.gitignore') {
+                if (! is_dir($directory.'/'.$file)) {
+                    unlink($directory.'/'.$file);
+                } else {
                     self::removeUploads($directory.'/'.$file);
+                }
             }
         }
         closedir($dir_handle);
