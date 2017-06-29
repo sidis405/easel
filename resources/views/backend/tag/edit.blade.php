@@ -16,8 +16,6 @@
                             <li><a href="{!! route('canvas.admin.tag.index') !!}">Tags</a></li>
                             <li class="active">Edit Tag</li>
                         </ol>
-                        @include('canvas::backend.shared.partials.errors')
-                        @include('canvas::backend.shared.partials.success')
                         <h2>
                             Edit <em>{{ $data['title'] }}</em>
                             <small>
@@ -31,6 +29,9 @@
 
                     </div>
                     <div class="card-body card-padding">
+
+                        @include('canvas::backend.shared.partials.errors')
+
                         <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('canvas.admin.tag.update', $data['id']) !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
@@ -56,7 +57,6 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
     @if(Session::get('_update-tag'))
         @include('canvas::backend.shared.notifications.notify', ['section' => '_update-tag'])
         {{ \Session::forget('_update-tag') }}

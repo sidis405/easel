@@ -31,7 +31,6 @@ elixir(function (mix) {
         'jquery.bootgrid.min.js',
         'lightgallery.min.js',
         'waves.js',
-        'jsvalidation.js',
         'jquery.mCustomScrollbar.concat.min.js',
         'fileinput.min.js',
         'bootstrap-datetimepicker.min.js',
@@ -45,7 +44,10 @@ elixir(function (mix) {
     ], assetsPath + 'js/app.js');
 
     // Copy fonts
-    mix.copy(['resources/assets/fonts', 'resources/assets/talvbansal/media-manager/fonts'], assetsPath + '/fonts');
+    mix.copy([
+        'resources/assets/fonts',
+        'resources/assets/talvbansal/media-manager/fonts'
+    ], assetsPath + '/fonts');
 
     // Version the assets
     mix.version([

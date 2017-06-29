@@ -2,25 +2,25 @@
 
 <div class="form-group">
     <div class="fg-line">
-        <input type="text" class="form-control" name="title" id="title"  placeholder="Title">
+        <input type="text" class="form-control" name="title" id="title"  placeholder="Title" value="{{ old('title') }}">
     </div>
 </div>
 
 <div class="form-group hidden">
     <div class="fg-line">
-        <input type="text" class="form-control" name="slug" id="slug" placeholder="Post Slug">
+        <input type="text" class="form-control" name="slug" id="slug" placeholder="Post Slug" value="{{ old('slug') }}">
     </div>
 </div>
 
 <div class="form-group">
     <div class="fg-line">
-        <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Subtitle">
+        <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}">
     </div>
 </div>
 
 <div class="form-group">
     <div class="fg-line">
-        <textarea class="form-control auto-size" id="editor" name="content" placeholder="What's on your mind?"></textarea>
+        <textarea class="form-control auto-size" id="editor" name="content" placeholder="What's on your mind?">{{ old('content') }}</textarea>
     </div>
 </div>
 

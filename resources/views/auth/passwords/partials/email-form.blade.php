@@ -2,9 +2,9 @@
     {!! csrf_field() !!}
 
     @if(session()->has('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
+        <ul style="padding-left: 0">
+            <li class="text-success" style="list-style-type: none"><small><i class="zmdi zmdi-check-circle"></i> {{ session('status') }}</small></li>
+        </ul>
     @endif
 
     <div class="form-group fg-line">

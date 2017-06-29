@@ -25,9 +25,9 @@ class TagCreateRequest extends FormRequest
     public function rules()
     {
         return [
-        'tag' => 'required|unique:'.CanvasHelper::TABLES['tags'].',tag',
-        'title' => 'required',
-        'subtitle' => 'required',
+            'tag' => 'required|unique:'.CanvasHelper::TABLES['tags'].',tag',
+            'title' => 'required',
+            'subtitle' => 'required',
         ];
     }
 }

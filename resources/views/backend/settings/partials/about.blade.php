@@ -20,7 +20,7 @@
             <p>UI/UX based on <a href="https://material.google.com/" target="_blank">Google Material Design</a>&nbsp;&#183;&nbsp;Powered by the <a href="https://laravel.com/" target="_blank">Laravel Framework</a></p>
             <p>
                 <a href="https://github.com/cnvs/canvas/releases" target="_blank">Releases</a>&nbsp;&#183;&nbsp;
-                <a href="https://github.com/cnvs/canvas/releases" target="_blank">Changelog</a>&nbsp;&#183;&nbsp;
+                <a href="https://cnvs.readme.io/docs/changelog" target="_blank">Changelog</a>&nbsp;&#183;&nbsp;
                 <a href="https://github.com/cnvs/canvas" target="_blank">GitHub</a>&nbsp;&#183;&nbsp;
                 <a href="https://packagist.org/packages/cnvs/canvas" target="_blank">Packagist</a>&nbsp;&#183;&nbsp;
                 <a href="https://github.com/cnvs/canvas/issues" target="_blank">Issues</a>

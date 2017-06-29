@@ -26,7 +26,7 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $email = Auth::user()->email;
+        $email = Auth::guard('canvas')->user()->email;
 
         return [
             'first_name' => 'required',

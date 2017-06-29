@@ -112,6 +112,6 @@ class Update extends CanvasCommand
 
         $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('second').'.'.PHP_EOL);
 
-        $this->line('To view all the upgrade changes, please visit github.com/cnvs/easel/releases.'.PHP_EOL);
+        $this->line('To see what\'s new, please visit https://cnvs.readme.io/docs/changelog.'.PHP_EOL);
     }
 }

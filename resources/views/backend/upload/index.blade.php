@@ -22,19 +22,20 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media</a>
+                                        <a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media Library</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         <h2>Media Library
-                            <small>All the files you’ve uploaded are listed alphabetically in the Media Library. Double-click a folder name to
-                                see its contents.
+                            <small>
+                                Drag and drop files onto this window to upload. Double-click a folder name to see its
+                                contents.
                             </small>
                         </h2>
                     </div>
 
-                    <media-manager></media-manager>
+                    <media-manager prefix="/admin/"></media-manager>
                 </div>
             </div>
         </section>

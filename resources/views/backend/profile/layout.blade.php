@@ -36,14 +36,13 @@
                                     <a href="{!! route('canvas.admin.profile.privacy') !!}">Privacy</a>
                                 </li>
                             </ul>
-                            @if(Session::has('errors') || Session::has('success'))
-                                <div class="pmb-block">
-                                    <div class="pmbb-header">
-                                        @include('canvas::backend.shared.partials.errors')
-                                        @include('canvas::backend.shared.partials.success')
-                                    </div>
-                                </div>
-                            @endif
+                            {{--@if(Session::has('errors') || Session::has('success'))--}}
+                                {{--<div class="pmb-block">--}}
+                                    {{--<div class="pmbb-header">--}}
+                                        {{--@include('canvas::backend.shared.partials.errors')--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
                         @show
                     </div>
                 </div>

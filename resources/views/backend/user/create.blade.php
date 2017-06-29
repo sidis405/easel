@@ -16,14 +16,13 @@
                             <li><a href="{!! route('canvas.admin.user.index') !!}">Users</a></li>
                             <li class="active">New User</li>
                         </ol>
-                        @include('canvas::backend.shared.partials.errors')
-                        @include('canvas::backend.shared.partials.success')
                         <h2>Create a New User</h2>
                     </div>
                     <div class="card-body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="createUser" action="{!! route('canvas.admin.user.store') !!}">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
+                            @include('canvas::backend.shared.partials.errors')
                             @include('canvas::backend.user.partials.form.create')
 
                             <div class="form-group">
@@ -40,6 +39,5 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Canvas\Http\Requests\UserCreateRequest', '#createUser') !!}
     @include('canvas::backend.shared.components.show-password', ['inputs' => 'input[name="password"]'])
 @stop
