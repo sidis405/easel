@@ -49,7 +49,7 @@ class Uninstall extends CanvasCommand
                 $this->dropDatabase();
                 $this->comment('Removing the uploads directory...');
                 $this->removeUploadsSymlink();
-                $this->removeUploads();
+                $this->removeUploads(storage_path('app/public/'));
                 $this->comment('Removing the search indexes...');
                 $this->removeIndexes();
                 $this->comment('Removing the installation file...');
@@ -85,14 +85,23 @@ class Uninstall extends CanvasCommand
         }
     }
 
-    protected function removeUploads()
+    protected function removeUploads($directory)
     {
-        foreach (scandir(storage_path('app/public/')) as $file) {
-            if ($file == '.' || $file == '..' || $file == '.gitignore') {
-                continue;
+        if (is_dir($directory))
+            $dir_handle = opendir($directory);
+        if (!$dir_handle)
+            return false;
+        while($file = readdir($dir_handle)) {
+            if ($file != "." && $file != ".." && $file != ".gitignore") {
+                if (!is_dir($directory."/".$file))
+                    unlink($directory."/".$file);
+                else
+                    self::removeUploads($directory.'/'.$file);
             }
-            unlink(storage_path('app/public/'.$file));
         }
+        closedir($dir_handle);
+
+        return true;
     }
 
     protected function removeIndexes()
