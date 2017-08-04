@@ -168,6 +168,8 @@ class Install extends CanvasCommand
                 // Additional blog settings...
                 $this->comment('Finishing up the installation process...');
                 $this->disqus();
+                $this->changyanAppID();
+                $this->changyanConf();
                 $this->googleAnalytics();
                 $this->twitterCardType();
                 $this->canvasVersion();

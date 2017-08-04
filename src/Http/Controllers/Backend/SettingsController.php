@@ -40,6 +40,8 @@ class SettingsController extends Controller
             'blogSeo' => Settings::blogSeo(),
             'blogAuthor' => Settings::blogAuthor(),
             'disqus' => Settings::disqus(),
+            'changyan_appid' => Settings::changyanAppid(),
+            'changyan_conf' => Settings::changyanConf(),
             'analytics' => Settings::gaId(),
             'twitterCardType' => Settings::twitterCardType(),
             'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
@@ -90,17 +92,25 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'blog_description'], ['setting_value' => $request->toArray()['blog_description']]);
         Settings::updateOrCreate(['setting_name' => 'blog_seo'], ['setting_value' => $request->toArray()['blog_seo']]);
         Settings::updateOrCreate(['setting_name' => 'blog_author'], ['setting_value' => $request->toArray()['blog_author']]);
-        Settings::updateOrCreate(['setting_name' => 'disqus_name'], ['setting_value' => $request->toArray()['disqus_name']]);
         Settings::updateOrCreate(['setting_name' => 'ga_id'], ['setting_value' => $request->toArray()['ga_id']]);
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
         Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
         Settings::updateOrCreate(['setting_name' => 'social_header_icons_user_id'], ['setting_value' => $request->toArray()['social_header_icons_user_id']]);
 
+        if (isset($request->toArray()['disqus_name'])) {
+            Settings::updateOrCreate(['setting_name' => 'disqus_name'], ['setting_value' => $request->toArray()['disqus_name']]);
+        }
+
+        if (isset($request->toArray()['changyan_appid']) || isset($request->toArray()['changyan_conf'])) {
+            Settings::updateOrCreate(['setting_name' => 'changyan_appid'], ['setting_value' => $request->toArray()['changyan_appid']]);
+            Settings::updateOrCreate(['setting_name' => 'changyan_conf'], ['setting_value' => $request->toArray()['changyan_conf']]);
+        }
+
         Session::set('_update-settings', trans('canvas::messages.save_settings_success'));
 
-        // Update theme
-        $this->themeManager->setActiveTheme($request->theme);
+        // Update the theme
+        $this->themeManager->setActiveTheme($request->toArray()['theme']);
 
         return redirect()->route('canvas.admin.settings');
     }

@@ -129,6 +129,26 @@ class Settings extends Model
     }
 
     /**
+     * Get the value of the ChangYan AppID.
+     *
+     * return @string
+     */
+    public static function changyanAppId()
+    {
+        return self::getByName('changyan_appid');
+    }
+
+    /**
+     * Get the value of the ChangYan Conf.
+     *
+     * return @string
+     */
+    public static function changyanConf()
+    {
+        return self::getByName('changyan_conf');
+    }
+
+    /**
      * Get the value of the Google Analytics Tracking ID.
      *
      * return @string

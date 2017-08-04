@@ -66,15 +66,33 @@
 
     <br>
 
-    <div class="form-group">
-        <div class="fg-line">
-            <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
-            <input type="text" class="form-control" name="disqus_name" id="disqus_name" value="{{ $data['disqus'] }}" placeholder="Disqus Shortname">
+    @if ('asia/shanghai' != strtolower(env('APP_TIMEZONE')))
+        <div class="form-group">
+            <div class="fg-line">
+                <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
+                <input type="text" class="form-control" name="disqus_name" id="disqus_name" value="{{ $data['disqus'] }}" placeholder="Disqus Shortname">
+            </div>
+            <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/options#section-disqus" target="_blank">learn more about this option</a>.</small>
         </div>
-        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/options#section-disqus" target="_blank">learn more about this option</a>.</small>
-    </div>
-
-    <br>
+        <br>
+    @else
+        <div class="form-group">
+            <div class="fg-line">
+                <label class="fg-label"><i class="zmdi zmdi-comment"></i> ChangYan AppID</label>
+                <input type="text" class="form-control" name="changyan_appid" id="changyan_appid" value="{{ $data['changyan_appid'] }}" placeholder="Changyan AppID">
+            </div>
+            <small>Enter your Changyan AppID or <a href="http://changyan.kuaizhan.com/" target="_blank">learn more about this option</a>.</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="fg-line">
+                <label class="fg-label"><i class="zmdi zmdi-comment"></i> ChangYan Conf</label>
+                <input type="text" class="form-control" name="changyan_conf" id="changyan_conf" value="{{ $data['changyan_conf'] }}" placeholder="Changyan Conf">
+            </div>
+            <small>Enter your Changyan Conf or <a href="http://changyan.kuaizhan.com/" target="_blank">learn more about this option</a>.</small>
+        </div>
+        <br>
+    @endif
 
     <div class="form-group">
         <div class="fg-line">
