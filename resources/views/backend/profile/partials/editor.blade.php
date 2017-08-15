@@ -1,5 +1,5 @@
 <script>
-    vm = new Vue({
+    const vm = new Vue({
         el: '#profile-main',
         data: {
             resume_cv: '{{ $data['resume_cv'] }}',

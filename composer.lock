@@ -2627,7 +2627,7 @@
                 "minimal",
                 "uploader"
             ],
-            "time": "2017-07-24T16:35:20+00:00"
+          "time": "2017-07-24T16:35:20+00:00"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
