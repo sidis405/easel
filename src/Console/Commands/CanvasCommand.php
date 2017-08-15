@@ -67,6 +67,22 @@ class CanvasCommand extends Command
         $settings->save();
     }
 
+    protected function changyanAppID()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'changyan_appid';
+        $settings->setting_value = null;
+        $settings->save();
+    }
+
+    protected function changyanConf()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'changyan_conf';
+        $settings->setting_value = null;
+        $settings->save();
+    }
+
     protected function googleAnalytics()
     {
         $settings = new Settings();

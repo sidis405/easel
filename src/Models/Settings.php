@@ -129,11 +129,11 @@ class Settings extends Model
     }
 
     /**
-     * Get the value of the ChangYan APPID.
+     * Get the value of the ChangYan AppID.
      *
      * return @string
      */
-    public static function changyanAppid()
+    public static function changyanAppId()
     {
         return self::getByName('changyan_appid');
     }
