@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "79eb8289f5434a6a5470117d67c16b4d",
+    "content-hash": "1482fc0f038e3c7d80ab458f9ced5b47",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -925,25 +925,25 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v2.0.3",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "c009e8694aa486179a929b69c48e0897007eb3e0"
+                "reference": "b899432186096dacc90700d5320d95cc3db1efe1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/c009e8694aa486179a929b69c48e0897007eb3e0",
-                "reference": "c009e8694aa486179a929b69c48e0897007eb3e0",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/b899432186096dacc90700d5320d95cc3db1efe1",
+                "reference": "b899432186096dacc90700d5320d95cc3db1efe1",
                 "shasum": ""
             },
             "require": {
-                "illuminate/bus": "~5.3",
-                "illuminate/contracts": "~5.3",
-                "illuminate/database": "~5.3",
-                "illuminate/pagination": "~5.3",
-                "illuminate/queue": "~5.3",
-                "illuminate/support": "~5.3",
+                "illuminate/bus": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/pagination": "~5.4",
+                "illuminate/queue": "~5.4",
+                "illuminate/support": "~5.4",
                 "php": ">=5.6.4"
             },
             "require-dev": {
@@ -957,7 +957,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Scout\\ScoutServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -981,7 +986,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2017-06-01T16:49:35+00:00"
+            "time": "2017-07-12T18:42:43+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2631,23 +2636,27 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v2.0.5",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14"
+                "reference": "4720643cc3cc9a3569ea8fa32a63fb12204ca6d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/c3ce55bd3170ff14c8e116de3ea418237ec18d14",
-                "reference": "c3ce55bd3170ff14c8e116de3ea418237ec18d14",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/4720643cc3cc9a3569ea8fa32a63fb12204ca6d4",
+                "reference": "4720643cc3cc9a3569ea8fa32a63fb12204ca6d4",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "~5.3",
-                "illuminate/database": "~5.3",
-                "illuminate/support": "~5.3",
+                "illuminate/bus": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/pagination": "~5.4",
+                "illuminate/queue": "~5.4",
+                "illuminate/support": "~5.4",
                 "laravel/scout": "*",
+                "php": ">=5.6.4",
                 "teamtnt/tntsearch": "1.0.*"
             },
             "require-dev": {
@@ -2685,7 +2694,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2017-04-20T11:06:00+00:00"
+            "time": "2017-07-25T21:04:18+00:00"
         },
         {
             "name": "teamtnt/tntsearch",
