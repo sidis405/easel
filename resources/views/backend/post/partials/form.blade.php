@@ -180,11 +180,12 @@
     </div>
 </form>
 
-<media-modal v-if="showMediaManager" @media-manager-close="showMediaManager = false">
-<media-manager
-        :is-modal="true"
-        :selected-event-name="selectedEventName"
-        prefix="/admin/"
-        @media-manager-close="showMediaManager = false"
-                                           >
-</media-manager>
+<media-modal v-if="showMediaManager" @media-modal-close="showMediaManager = false">
+    <media-manager
+            :is-modal="true"
+            :selected-event-name="selectedEventName"
+            prefix="/admin/"
+            @media-modal-close="showMediaManager = false"
+     >
+    </media-manager>
+</media-modal>
