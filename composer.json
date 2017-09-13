@@ -1,13 +1,13 @@
 {
-	"name": "cnvs/easel",
-	"description": "Canvas Framework",
+	"name": "sidis405/easel",
+	"description": "Canvas Framework sidis405 Fork for Laravel 5.5",
 	"keywords": ["canvas", "framework"],
 	"type": "canvas-framework",
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Todd Austin",
-			"email": "austin.todd.j@gmail.com"
+			"name": "Sidrit Trandafili",
+			"email": "sid@trandafili.com"
 		}
 	],
 	"require": {
